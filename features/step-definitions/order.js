@@ -11,22 +11,27 @@ When('I select random product', async function() {
 });
 
 When('I select quantity, size and color', async () => {
-    const quantityInput = await $('#quantity_wanted');
-    await quantityInput.setValue('1');
+    // REVIEW: Why no page objects used?
+    // const quantityInput = await $('#quantity_wanted');
+    // await quantityInput.setValue('1');
 
     // Handling different size or color if applicable
-    const sizeDropdown = await $('#group_1');
-    const sizeOptions = await sizeDropdown.$$('option');
-    const randomSizeIndex = Math.floor(Math.random() * sizeOptions.length);
-    await sizeOptions[randomSizeIndex].click();
+    // REVIEW: Why no page objects used?
+    // const sizeDropdown = await $('#group_1');
+    // const sizeOptions = await sizeDropdown.$$('option');
+    // const randomSizeIndex = Math.floor(Math.random() * sizeOptions.length);
+    // await sizeOptions[randomSizeIndex].click();
 
-    const colorOption = await $('//*[@id="color_to_pick_list"]//a');
-    await colorOption.click();
+    // REVIEW: Why no page objects used?
+    // const colorOption = await $('//*[@id="color_to_pick_list"]//a');
+    // await colorOption.click();
+    await browser.debug();
 });
 
 When('I click Add to cart button', async function() {
-    await productPage.clickOnAddToCart.waitForDisplayed();
-    await productPage.clickOnAddToCart.click();
+    await browser.debug();
+    // await productPage.clickOnAddToCart.waitForDisplayed();
+    // await productPage.clickOnAddToCart.click();
 });
 
 When('I close the confirmation window', async function() {
@@ -36,5 +41,6 @@ When('I close the confirmation window', async function() {
 
 
 Then('I see correct number of items in the cart', async function() {
+    await browser.debug();
     await expect(productPage.productQtyInCart).toHaveText(await productPage.addedProductQty.getText())
 });

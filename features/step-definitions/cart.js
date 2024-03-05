@@ -14,6 +14,8 @@ When('I click on item remove button', async function() {
     await cartPage.clickOnItemRemoveButton.click();
 });
 
+// REVIEW: The name of the step implies that it's more generic than it's actually is.
+// I name it to somehting more specific to cart
 Then('I see {word} message', async function(word) {
     await expect(cartPage.isEmptyMessage).toHaveText(word); 
 });                                                         
